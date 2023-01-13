@@ -22,6 +22,9 @@ function card_quantity_prompt(){
     }
     create_cards();
 }
+function comprador(){
+    return Math.random() - 0.5;
+}
 function create_cards(){
     let i = 0;
     let j = 0;
@@ -29,6 +32,7 @@ function create_cards(){
         deck.push(suit[i]);
         i=i+1;
     }
+    deck.sort(comprador);
     let playmat = document.querySelector(".play-area");
     while (j < deck.length){
         let card_model = `
