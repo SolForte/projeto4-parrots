@@ -40,12 +40,12 @@ function create_cards(){
     let playmat = document.querySelector(".play-area");
     while (j < deck.length){
         let card_model = `
-        <div class="card" onclick="card_flip(this)">
+        <div data-test="card" class="card" onclick="card_flip(this)">
         <div class="front-face face">
-            <img alt="" src="assets/back.png">
+            <img data-test="face-down-image" alt="" src="assets/back.png">
         </div>
         <div class="back-face face">
-            <img alt="" src="assets/${deck[j]}">
+            <img data-test="face-up-image" alt="" src="assets/${deck[j]}">
         </div>
         </div>
         `
