@@ -1,5 +1,5 @@
 let deck = []; //baralho vazio ao invés de com 14 itens para poder dar array.push
-let suit = [
+const suit = [
 "bobrossparrot.gif",
 "bobrossparrot.gif",
 "explodyparrot.gif",
@@ -24,19 +24,24 @@ function card_quantity_prompt(){
 }
 function create_cards(){
     let i = 0;
+    let j = 0;
     while (i < card_quantity){
         deck.push(suit[i]);
         i=i+1;
     }
+    let playmat = document.querySelector(".play-area");
+    while (j < deck.length){
+        let card_model = `
+        <div class="card">
+        <div class="front-face face">
+            <img alt="" src="assets/back.png">
+        </div>
+        <div class="back-face face">
+            <img alt="" src="assets/${deck[j]}">
+        </div>
+        </div>
+        `
+        playmat.innerHTML = playmat.innerHTML + card_model;
+        j=j+1;
+    }
 }
-card_quantity_prompt()
-/* model for innerHTML +=
-`<div class="card">
-    <div class="front-face face">
-        <img alt="" src="assets/back.png">
-    </div>
-    <div class="back-face face">
-        <img alt="" src="">
-    </div>
-</div>`
-*/
