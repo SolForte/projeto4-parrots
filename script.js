@@ -79,9 +79,12 @@ function card_flip(current_card) {
       }
     }
     if (correct_plays === card_quantity){
-        alert(`Você ganhou em ${play_counter} jogadas!`);
+        setTimeout(game_set,250);
       }
   }
+function game_set(){
+    alert(`Você ganhou em ${play_counter} jogadas!`);
+}
 function card_unflip() {
     first_flip.classList.remove("flip");
     second_flip.classList.remove("flip");
