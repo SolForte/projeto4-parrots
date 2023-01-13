@@ -36,7 +36,7 @@ function create_cards(){
     let playmat = document.querySelector(".play-area");
     while (j < deck.length){
         let card_model = `
-        <div class="card">
+        <div class="card" onclick="card_flip(this)">
         <div class="front-face face">
             <img alt="" src="assets/back.png">
         </div>
@@ -48,4 +48,11 @@ function create_cards(){
         playmat.innerHTML = playmat.innerHTML + card_model;
         j=j+1;
     }
+}
+
+function card_flip(current_card){
+    if (current_card.classList.contains("flip")){
+        return;
+    }
+    current_card.classList.add("flip");
 }
