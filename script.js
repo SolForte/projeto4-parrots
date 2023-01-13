@@ -15,6 +15,7 @@ const suit = [
 "unicornparrot.gif",
 "unicornparrot.gif"];
 let card_quantity = 0;
+let first_flip, second_flip = undefined;
 function card_quantity_prompt(){
     card_quantity = Number(prompt("Com quantas cartas você jogar?"));
     if (card_quantity < 4 || card_quantity > 14 || card_quantity % 2 || isNaN(card_quantity)){
@@ -49,10 +50,27 @@ function create_cards(){
         j=j+1;
     }
 }
-
-function card_flip(current_card){
-    if (current_card.classList.contains("flip")){
-        return;
+function card_flip(current_card) {
+    if (current_card.classList.contains("flip")) {
+      return;
     }
     current_card.classList.add("flip");
+    if (first_flip === undefined) {
+      first_flip = current_card;
+    } else {
+      if (second_flip === undefined) {
+        second_flip = current_card;
+  
+        if (first_flip.innerHTML === second_flip.innerHTML) {
+          first_flip, second_flip = undefined;
+        } else {
+          setTimeout(card_unflip,1000);
+        }
+      }
+    }
+  }
+function card_unflip() {
+    first_flip.classList.remove("flip");
+    second_flip.classList.remove("flip");
+    first_flip, second_flip = undefined;
 }
