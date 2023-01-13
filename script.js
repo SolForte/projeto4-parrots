@@ -15,7 +15,10 @@ const suit = [
 "unicornparrot.gif",
 "unicornparrot.gif"];
 let card_quantity = 0;
-let first_flip, second_flip = undefined;
+let first_flip = undefined;
+let second_flip = undefined;
+let play_counter = 0;
+let correct_plays = 0;
 function card_quantity_prompt(){
     card_quantity = Number(prompt("Com quantas cartas você jogar?"));
     while (card_quantity < 4 || card_quantity > 14 || card_quantity % 2 || isNaN(card_quantity)){
@@ -58,6 +61,7 @@ function card_flip(current_card) {
         return;
     } else {
         current_card.classList.add("flip");
+        play_counter = play_counter + 1;
     }
     if (first_flip === undefined) {
       first_flip = current_card;
@@ -68,11 +72,15 @@ function card_flip(current_card) {
         if (first_flip.innerHTML === second_flip.innerHTML) {
           first_flip = undefined;
           second_flip = undefined;
+          correct_plays = correct_plays + 2;
         } else {
           setTimeout(card_unflip,1000);
         }
       }
     }
+    if (correct_plays === card_quantity){
+        alert(`Você ganhou em ${play_counter} jogadas!`);
+      }
   }
 function card_unflip() {
     first_flip.classList.remove("flip");
