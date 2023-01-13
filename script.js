@@ -91,3 +91,4 @@ function card_unflip() {
     first_flip = undefined;
     second_flip = undefined;
 }
+card_quantity_prompt();

@@ -58,3 +58,21 @@ body{
 .card .face img{
   width: 100px;
 } 
+@media (max-width: 480px){
+  .game-title p{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: -0.004em;
+    color: #75B79E;
+    text-align: center;
+  }
+}
+@media (max-width: 335px){
+  .play-area{
+    flex: 1;
+    flex-direction: column;
+  }
+}
