@@ -19,6 +19,9 @@ let first_flip = undefined;
 let second_flip = undefined;
 let play_counter = 0;
 let correct_plays = 0;
+let play_again_prompt = undefined;
+let i = 0;
+let j = 0;
 function card_quantity_prompt(){
     card_quantity = Number(prompt("Com quantas cartas você jogar?"));
     while (card_quantity < 4 || card_quantity > 14 || card_quantity % 2 || isNaN(card_quantity)){
@@ -30,8 +33,6 @@ function comprador(){
     return Math.random() - 0.5;
 }
 function create_cards(){
-    let i = 0;
-    let j = 0;
     while (i < card_quantity){
         deck.push(suit[i]);
         i=i+1;
@@ -80,7 +81,7 @@ function card_flip(current_card) {
     }
     if (correct_plays === card_quantity){
         setTimeout(game_set,250);
-      }
+        setTimeout(one_more_time,500);     
   }
 function game_set(){
     alert(`Você ganhou em ${play_counter} jogadas!`);
@@ -91,4 +92,23 @@ function card_unflip() {
     first_flip = undefined;
     second_flip = undefined;
 }
-card_quantity_prompt();
+function one_more_time(){
+    play_again_prompt = prompt("Jogar de novo?");
+      while (play_again_prompt != "sim" && play_again_prompt != "não"){
+        play_again_prompt = prompt("Jogar de novo?");
+      }
+      if (play_again_prompt === "sim"){
+        playmat = document.querySelector(".play-area");
+        playmat.innerHTML = "";
+        card_quantity = 0;
+        first_flip = undefined;
+        second_flip = undefined;
+        play_counter = 0;
+        correct_plays = 0;
+        deck = [];
+        i = 0;
+        j = 0;
+        card_quantity_prompt();
+      }
+    }
+}
