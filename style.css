@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
 body{
   background-color: #eef9bf;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .game-title {
   display: flex;
@@ -23,7 +27,9 @@ body{
 }
 .play-area{
   display: flex;
+  width: 60vw;
   flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
